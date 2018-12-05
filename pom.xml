@@ -39,6 +39,31 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <complianceLevel>1.8</complianceLevel>
+                    <source>1.8</source>
+                    <!-- 如果aspectj的AspectJ类：com.jl.common.aspectj.AspectConf在某个maven jar包中，则此处配置为该jar包 -->
+                    <!--<aspectLibraries>-->
+                        <!--<aspectLibrary>-->
+                            <!--<groupId>com.jl</groupId>-->
+                            <!--<artifactId>aspects</artifactId>-->
+                        <!--</aspectLibrary>-->
+                    <!--</aspectLibraries>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- 在compile命令时执行 -->
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -50,6 +75,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.9</version>
         </dependency>
 
     </dependencies>
