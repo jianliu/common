@@ -25,3 +25,8 @@ some common utils that not always use,but useful in some where
 List<Class<?>> classes = ClassUtil.getClasses("com.jl.common", clazz -> true);
 ```
 
+###原生的aspectj可以解决“自调用”问题
+spring aop只是使用了aspectj的语法，它的实现是运行时动态增强，通过生成一个proxy类来代理原来的类，一旦调用进行原始类，原始类方法调用内部其他方法时，不会走增强逻辑
+即使目前方法已经被表象上增加，也无济于事，因为只有在调用proxy类的方法时，才会被增强
+aspectj原生则是在编译时增强，即修改原代码中方法的实现代码进行增强
+这种类比于修改源代码的操作，javaagent也可以办到，它是通过载入java class文件时，实现ClassFileTransformer接口，修改字节码增强的，如使用javaassit来增强，输出增强后的代码。
