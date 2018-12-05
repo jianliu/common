@@ -2,7 +2,6 @@ package com.jl.common.aspectj.bean;
 
 /**
  * aspectj本身并无“自调用”问题
- * Created by cdliujian1 on 2018/12/5.
  */
 public class PrintService {
 
